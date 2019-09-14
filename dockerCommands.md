@@ -9,8 +9,10 @@ docker container run -it --name <NAME> <IMAGE>:<TAG>
 
 `Manage images`
 
-##Commands:
-		
+## Commands:
+
+ | Command     | Description
+ | ----------- | ------------------------------------------------------------------------------|		
  | `build`     |  Build an image from a Dockerfile                                             |
  |  `history`  |  Show the history of an image						       |	
  | `import`    |  Import the contents from a tarball to create a filesystem image	       |	
