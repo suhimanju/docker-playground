@@ -10,7 +10,7 @@ docker container run -it --name <NAME> <IMAGE>:<TAG>
 `Manage images`
 
 ##Commands:
- _______________________________________________________________________________________________
+		
  | `build`     |  Build an image from a Dockerfile                                             |
  |  `history`  |  Show the history of an image						       |	
  | `import`    |  Import the contents from a tarball to create a filesystem image	       |	
@@ -23,7 +23,7 @@ docker container run -it --name <NAME> <IMAGE>:<TAG>
  | `rm`        |  Remove one or more images						       |	
  | `save`      |  Save one or more images to a tar archive (streamed to STDOUT by default)     |	
  | `tag`       |  Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE			       |	
- |_____________|_______________________________________________________________________________|
+ 
 
 
 # Creating Containers:
