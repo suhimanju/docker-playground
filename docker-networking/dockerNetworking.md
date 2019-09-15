@@ -31,7 +31,7 @@ Deleting a network:
 Remove all unused networks:
 ```docker network prune```
 
-##Adding and Removing containers to a network
+## Adding and Removing containers to a network
 
 Create a container with no network:
 ```docker container run -d --name network-test03 -p 8081:80 nginx```
@@ -50,7 +50,7 @@ Remove network-test03 from br01:
 
 # Networking Containers:
 
-##Creating a network and defining a Subnet and Gateway
+## Creating a network and defining a Subnet and Gateway
 
 Create a bridge network with a subnet and gateway:
 ```docker network create --subnet 10.1.0.0/24 --gateway 10.1.0.1 br02```
@@ -65,8 +65,8 @@ Prune all unused networks:
 ```docker network prune```
 
 Create a network with an IP range:
-```docker network create --subnet 10.1.0.0/16 --gateway 10.1.0.1 \
---ip-range=10.1.4.0/24 --driver=bridge --label=host4network br04```
+```docker network create --subnet 10.1.0.0/16 --gateway 10.1.0.1```
+```--ip-range=10.1.4.0/24 --driver=bridge --label=host4network br04```
 
 Inspect the br04 network:
 ```docker network inspect br04```
@@ -75,8 +75,8 @@ Create a container using the br04 network:
 ```docker container run --name network-test01 -it --network br04 centos /bin/bash```
 
 Install Net Tools:
-```yum update -y
-yum install -y net-tools```
+```yum update -y```
+```yum install -y net-tools```
 
 Get the IP info for the container:
 `ifconfig`
@@ -87,7 +87,7 @@ Get the gateway info the container:
 Get the DNS info for the container:
 ```cat /etc/resolv.conf```
 
-##Assigning IPs to a container:
+## Assigning IPs to a container:
 
 Create a new container and assign an IP to it:
 ```docker container run -d --name network-test02 --ip 10.1.4.102 --network br04 nginx```
@@ -98,19 +98,19 @@ Get the IP info for the container:
 Inspect network-test03 to see that br01 was removed:
 ```docker container inspect network-test04```
 
-##Networking two containers
+## Networking two containers:
 Create an internal network:
 ```docker network create -d bridge --internal localhost```
 
 Create a MySQL container that is connected to localhost:
-```docker container run -d --name test_mysql \
--e MYSQL_ROOT_PASSWORD=P4sSw0rd0 \
---network localhost mysql:5.7```
+```docker container run -d --name test_mysql ```
+```-e MYSQL_ROOT_PASSWORD=P4sSw0rd0 ```
+```--network localhost mysql:5.7```
 
 Create a container that can ping the MySQL container:
-```docker container run -it --name ping-mysql \
---network bridge \
-centos```
+```docker container run -it --name ping-mysql ```
+```--network bridge ```
+```centos```
 
 Connect ping-mysql to the localhost network:
 ```docker network connect localhost ping-mysql```
@@ -119,8 +119,8 @@ Restart and attach to container:
 ```docker container start -ia ping-mysql```
 
 Create a container that can't ping the MySQL container:
-```docker container run -it --name cant-ping-mysql \
-centos```
+```docker container run -it --name cant-ping-mysql ```
+```centos```
 
 Create a Nginx container that is not publicly accessible:
 ```docker container run -d --name private-nginx -p 8081:80 --network localhost nginx```
