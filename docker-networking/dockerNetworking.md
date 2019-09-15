@@ -10,8 +10,8 @@ connect Connect a container to a network create Create a network disconnect Disc
 
 List all Docker networks on the host:
 
-```docker network ls \
-docker network ls --no-trunc```
+```docker network ls``` 
+```docker network ls --no-trunc```
 
 Getting detailed info on a network:
 ```docker network inspect [NAME]```
