@@ -56,7 +56,8 @@ Use --expose [PORT]
 -P, or --publish-all publishes all exposed ports to random ports
 docker container run -p [HOST_PORT]:[CONTAINER_PORT] [IMAGE]
 docker container run -p [HOST_PORT]:[CONTAINER_PORT]/tcp -p [HOST_PORT]:[CONTAINER_PORT]/udp [IMAGE]
-docker container run -P```
+docker container run -P
+```
 
 ## Lists all port mappings or a specific mapping for a container:
 ```docker container port [Container_NAME]```
@@ -72,31 +73,38 @@ Execute a command on a container:
 
 ## Example:
 
-```docker container run -d -p 8080:80 nginx
+```
+docker container run -d -p 8080:80 nginx
 docker container ps
 docker container exec -it [NAME]or[CONTAINER_ID] /bin/bash
-docker container exec -it [NAME]or[CONTAINER_ID] ls /usr/share/nginx/html/```
+docker container exec -it [NAME]or[CONTAINER_ID] ls /usr/share/nginx/html/
+```
 
 
 ## Container Logging:
 
 Create a container using the weather-app image.
 
-docker container run --name weather-app -d -p 80:3000 linuxacademycontent/weather-app
+```docker container run --name weather-app -d -p 80:3000 linuxacademycontent/weather-app```
+
 Show information logged by a running container:
 
-docker container logs [NAME]
-Show information logged by all containers participating in a service:
+```docker container logs [NAME]```
 
-docker service logs [SERVICE]
+Show information logged by all containers participating in a service:
+```docker service logs [SERVICE]```
+
 Logs need to be output to STDOUT and STDERR.
 
 Nginx Example:
 
+```
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
+```
 Debug a failed container deploy:
 
+```
 docker container run -d --name ghost_blog \
     -e database__client=mysql \
     -e database__connection__host=mysql \
@@ -105,4 +113,4 @@ docker container run -d --name ghost_blog \
     -e database__connection__database=ghost \
     -p 8080:2368 \
     ghost:1-alpine
-
+```

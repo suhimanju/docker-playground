@@ -9,18 +9,20 @@ List all Docker network commands:
 
 ```docker network -h```
 
-* connect Connect a container to a network 
-* create Create a network 
-* disconnect Disconnect a container from a network 
-* inspect Display detailed information on one or more networks 
-* ls List networks 
-* prune Remove all unused networks 
-* rm Remove one or more networks
+* `connect` Connect a container to a network 
+* `create` Create a network 
+* `disconnect` Disconnect a container from a network 
+* `inspect` Display detailed information on one or more networks 
+* `ls` List networks 
+* `prune` Remove all unused networks 
+* `rm` Remove one or more networks
 
 List all Docker networks on the host:
 
-```docker network ls``` 
-```docker network ls --no-trunc```
+```
+docker network ls
+docker network ls --no-trunc
+```
 
 Getting detailed info on a network:
 
@@ -82,8 +84,10 @@ Prune all unused networks:
 
 Create a network with an IP range:
 
-```docker network create --subnet 10.1.0.0/16 --gateway 10.1.0.1```
-```--ip-range=10.1.4.0/24 --driver=bridge --label=host4network br04```
+```
+docker network create --subnet 10.1.0.0/16 --gateway 10.1.0.1
+--ip-range=10.1.4.0/24 --driver=bridge --label=host4network br04
+```
 
 Inspect the br04 network:
 
@@ -95,8 +99,10 @@ Create a container using the br04 network:
 
 Install Net Tools:
 
-```yum update -y```
-```yum install -y net-tools```
+```
+yum update -y
+yum install -y net-tools
+```
 
 Get the IP info for the container:
 
@@ -131,15 +137,19 @@ Create an internal network:
 
 Create a MySQL container that is connected to localhost:
 
-```docker container run -d --name test_mysql ```
-```-e MYSQL_ROOT_PASSWORD=P4sSw0rd0 ```
-```--network localhost mysql:5.7```
+```
+docker container run -d --name test_mysql 
+    -e MYSQL_ROOT_PASSWORD=P4sSw0rd0 
+    --network localhost mysql:5.7
+```
 
 Create a container that can ping the MySQL container:
 
-```docker container run -it --name ping-mysql ```
-```--network bridge ```
-```centos```
+```
+docker container run -it --name ping-mysql
+    --network bridge 
+    centos
+```
 
 Connect ping-mysql to the localhost network:
 
@@ -151,8 +161,10 @@ Restart and attach to container:
 
 Create a container that can't ping the MySQL container:
 
-```docker container run -it --name cant-ping-mysql ```
-```centos```
+```
+docker container run -it --name cant-ping-mysql
+centos
+```
 
 Create a Nginx container that is not publicly accessible:
 
